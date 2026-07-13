@@ -1,0 +1,12 @@
+# Files kept in the repo but excluded from the installed copy
+# (see Spec Kit EXTENSION-DEVELOPMENT-GUIDE.md → .extensionignore)
+
+.git/
+.github/
+.gitignore
+__pycache__/
+*.pyc
+
+# Dev-only docs — the extension ships README.md + CHANGELOG.md, not these
+docs/
+CONTRIBUTING.md

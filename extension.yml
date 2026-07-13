@@ -1,0 +1,40 @@
+schema_version: "1.0"
+
+extension:
+  id: figma-images
+  name: "Figma Images to Spec"
+  version: "1.0.0"
+  description: "Turn a Figma section's screens into per-screen specs, user stories, and a build order, then hand off to /speckit.specify."
+  # TODO: replace YOUR-GITHUB-USERNAME with the real public repo owner before publishing.
+  author: "Tarini Mohapatra"
+  repository: "https://github.com/YOUR-GITHUB-USERNAME/spec-kit-figma-images"
+  homepage: "https://github.com/YOUR-GITHUB-USERNAME/spec-kit-figma-images"
+  license: MIT
+
+requires:
+  speckit_version: ">=0.1.0"
+  tools:
+    - name: python3
+      version: ">=3.8"
+      required: true
+
+provides:
+  commands:
+    - name: speckit.figma-images.specify
+      file: commands/speckit.figma-images.specify.md
+      description: "Generate Figma-derived specs from a Figma section link, then hand off to /speckit.specify"
+
+hooks:
+  before_specify:
+    command: "speckit.figma-images.specify"
+    priority: 10
+    optional: true
+    prompt: "Generate Spec Kit specs from a Figma section before running /speckit.specify?"
+    description: "Run the figma-images-to-spec pipeline to turn a Figma design into specs."
+
+tags:
+  - figma
+  - design
+  - design-to-spec
+  - ui
+  - frontend
