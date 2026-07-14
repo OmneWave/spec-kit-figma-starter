@@ -5,10 +5,9 @@ extension:
   name: "Figma Specs"
   version: "1.0.0"
   description: "Turn a Figma section's screens into per-screen specs, user stories, and a build order, then hand off to /speckit.specify."
-  # TODO before public release: extension id is 'figma-specs' but the repo/URLs say 'figma-import' — reconcile the repo name.
-  author: "Tarini Mohapatra"
-  repository: "https://github.com/wavemaker/spec-kit-figma-import"
-  homepage: "https://github.com/wavemaker/spec-kit-figma-import"
+  author: "Wavemaker"
+  repository: "https://github.com/wavemaker/figma-specs"
+  homepage: "https://github.com/wavemaker/figma-specs"
   license: MIT
 
 requires:
