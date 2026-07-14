@@ -29,6 +29,8 @@ This command **stops at the Figma-derived specs**. It does not synthesize a Spec
 
 `figma-specs/` is created automatically by the pipeline; you do not need to scaffold it.
 
+A project **constitution** is *not* required to run this command — this can be the first Spec Kit command you run after installing the extension. If no constitution exists yet, the command offers to set one up before handing off to `/speckit.specify` (see [Handoff](#handoff)).
+
 ## Steps
 
 ### Step 1: Resolve the input
@@ -69,7 +71,16 @@ Report to the user:
 
 ## Handoff
 
-The Figma-derived specs are the input to core Spec Kit. Continue with **`/speckit.specify`**, which creates the feature and its `spec.md`:
+The Figma-derived specs are the input to core Spec Kit. **Before** handing off to `/speckit.specify`, make sure a project constitution is in place:
+
+- A Spec Kit **constitution** (`.specify/memory/constitution.md`) captures the project's governing principles and is normally established with `/speckit.constitution` before `/speckit.specify`. Because this command can be run first — right after installing the extension — the constitution may not exist yet.
+- Check for it. If `.specify/memory/constitution.md` is **missing or empty**, ask the user:
+  > No project constitution was found. Would you like to set one up with `/speckit.constitution` before running `/speckit.specify`?
+
+  Then **stop and wait** for their answer. Do **not** run `/speckit.constitution` yourself — the user runs it if they say yes.
+- If a constitution already exists, or the user declines, continue to `/speckit.specify`.
+
+Then continue with **`/speckit.specify`**, which creates the feature and its `spec.md`:
 
 1. **Whole module:** run `/speckit.specify` and point it at `figma-specs/<module>/` — read `user-stories.md`, `build-order.md`, and every `<NN>-<slug>/spec.md`, then synthesize them into a single feature spec.
 2. **Single screen:** run `/speckit.specify` and point it at one `figma-specs/<module>/<NN>-<slug>/spec.md`, following the sequence in `build-order.md`.
@@ -81,4 +92,5 @@ From there the normal chain follows: `/speckit.plan` → `/speckit.tasks` → `/
 - [ ] The figma-images-to-spec pipeline ran (steps 1–4, none skipped)
 - [ ] `user-stories.md`, `build-order.md`, and one `<NN>-<slug>/spec.md` per screen exist under `figma-specs/<module>/`
 - [ ] Completion reported with module name and the design source root
+- [ ] Checked for a project constitution (`.specify/memory/constitution.md`) and, if missing, offered to set one up with `/speckit.constitution`
 - [ ] Handed off to `/speckit.specify`

@@ -16,7 +16,7 @@ distribution paths. This extension is set up for all three.
 3. Users install with:
    ```bash
    specify extension add figma-specs \
-     --from https://github.com/<owner>/spec-kit-figma-import/archive/refs/tags/v1.0.0.zip
+     --from https://github.com/<owner>/figma-specs/archive/refs/tags/v1.0.0.zip
    ```
 
 ## 2. Community catalog (discovery)
