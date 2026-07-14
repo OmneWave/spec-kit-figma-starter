@@ -17,7 +17,7 @@ Download frames and prototype metadata from a Figma section.
 # Optional: load a token from .env if you use one (else export FIGMA_TOKEN).
 [ -f .env ] && set -a && . ./.env && set +a
 
-python3 .specify/extensions/figma-images/scripts/figma_pull.py screens "<figma section url>"
+python3 .specify/extensions/figma-specs/scripts/figma_pull.py screens "<figma section url>"
 ```
 
 Optional: `-o module-name` to override the output folder under `figma-specs/`.

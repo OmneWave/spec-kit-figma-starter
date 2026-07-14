@@ -46,7 +46,7 @@ If the local Figma MCP is not connected, connect it first (it exposes `get_varia
 
 ```bash
 [ -f .env ] && set -a && . ./.env && set +a
-python3 .specify/extensions/figma-images/scripts/figma_pull.py resources "<figma section url>" -o <module> --assets-only &
+python3 .specify/extensions/figma-specs/scripts/figma_pull.py resources "<figma section url>" -o <module> --assets-only &
 ```
 
 `--assets-only` pulls **only** icons and embedded images — tokens and typography come from the MCP in Part 1, so the helper never touches them. Use the same `-o module-name` as pull-screens. **Do not wait** for this process.

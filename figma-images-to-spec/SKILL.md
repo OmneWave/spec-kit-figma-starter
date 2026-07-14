@@ -40,7 +40,7 @@ Always use the Figma MCP for these; the REST CLI is not used for tokens/typograp
 **Part 2 — icons + images via bundled REST helper** (background):
 
 ```bash
-python3 .specify/extensions/figma-images/scripts/figma_pull.py resources "<url>" -o <module> --assets-only &   # icons + embedded only
+python3 .specify/extensions/figma-specs/scripts/figma_pull.py resources "<url>" -o <module> --assets-only &   # icons + embedded only
 ```
 
 ## Output layout

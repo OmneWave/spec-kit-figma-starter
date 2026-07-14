@@ -17,13 +17,13 @@ The user input **is** the Figma section link (and optionally an `-o <folder>` mo
 
 ## Purpose
 
-Bridge design → spec. This command runs the **figma-images-to-spec** pipeline — shipped with this extension at `.specify/extensions/figma-images/figma-images-to-spec/` — to turn a Figma section into Figma-derived specs, then hands off to core `/speckit.specify`. The pipeline is plain Markdown, so it works with any Spec Kit agent (Cursor, Claude, Copilot, Gemini, Windsurf, …).
+Bridge design → spec. This command runs the **figma-images-to-spec** pipeline — shipped with this extension at `.specify/extensions/figma-specs/figma-images-to-spec/` — to turn a Figma section into Figma-derived specs, then hands off to core `/speckit.specify`. The pipeline is plain Markdown, so it works with any Spec Kit agent (Cursor, Claude, Copilot, Gemini, Windsurf, …).
 
 This command **stops at the Figma-derived specs**. It does not synthesize a Spec Kit `spec.md` itself and does not generate implementation tasks — that is core Spec Kit's job. Once the pipeline finishes, you hand the written specs to `/speckit.specify`, which owns feature registration and the downstream `/speckit.plan` → `/speckit.tasks` → `/speckit.implement` chain.
 
 ## Prerequisites
 
-1. The **figma-images-to-spec** pipeline is present at `.specify/extensions/figma-images/figma-images-to-spec/` (installed with this extension via `specify extension add`).
+1. The **figma-images-to-spec** pipeline is present at `.specify/extensions/figma-specs/figma-images-to-spec/` (installed with this extension via `specify extension add`).
 2. A Figma token is available: `FIGMA_TOKEN` (or `FIGMA_ACCESS_TOKEN`) in the environment, or a `.env` file with `FIGMA_TOKEN=...` at the project root. Without a token the pipeline falls back to the Figma MCP server (`get_screenshot`, `get_metadata`, `get_variable_defs`, `get_design_context`).
 3. `python3` (>=3.8) is available on the PATH — the bundled REST helper is standard-library only (no pip install).
 
@@ -38,7 +38,7 @@ This command **stops at the Figma-derived specs**. It does not synthesize a Spec
 
 ### Step 2: Run the figma-images-to-spec pipeline (blocking, in order)
 
-Read `.specify/extensions/figma-images/figma-images-to-spec/SKILL.md`, then run its pipeline steps **in order** with the resolved URL. Each step's instructions live at `.specify/extensions/figma-images/figma-images-to-spec/<step>/SKILL.md` — read and follow each before producing its output. Do not skip steps — trace-flows must run before any spec is written.
+Read `.specify/extensions/figma-specs/figma-images-to-spec/SKILL.md`, then run its pipeline steps **in order** with the resolved URL. Each step's instructions live at `.specify/extensions/figma-specs/figma-images-to-spec/<step>/SKILL.md` — read and follow each before producing its output. Do not skip steps — trace-flows must run before any spec is written.
 
 | Step | Sub-skill (`<step>/SKILL.md`) | Output |
 |------|-----------|--------|
@@ -47,7 +47,7 @@ Read `.specify/extensions/figma-images/figma-images-to-spec/SKILL.md`, then run 
 | 3 | `read-screens` | Layout notes per page / dialog / step |
 | 4 | `write-spec` | `user-stories.md`, `build-order.md`, `<NN>-<slug>/spec.md` |
 
-After `pull-screens` resolves the module name, run `pull-resources` — **do not block** the spec on it. Design **tokens and typography** come from the local Figma MCP (`get_variable_defs`, `get_design_context`); **icons and embedded images** come from the bundled REST helper (`python3 .specify/extensions/figma-images/scripts/figma_pull.py resources ... --assets-only`) in the background.
+After `pull-screens` resolves the module name, run `pull-resources` — **do not block** the spec on it. Design **tokens and typography** come from the local Figma MCP (`get_variable_defs`, `get_design_context`); **icons and embedded images** come from the bundled REST helper (`python3 .specify/extensions/figma-specs/scripts/figma_pull.py resources ... --assets-only`) in the background.
 
 ### Step 3: Verify the output
 

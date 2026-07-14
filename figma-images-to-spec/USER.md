@@ -63,4 +63,4 @@ Then continue the normal chain: `/speckit.plan` → `/speckit.tasks` → `/speck
 | 4 | write-spec |
 | background | pull-resources |
 
-All under `.specify/extensions/figma-images/figma-images-to-spec/` (installed with the Figma Images to Spec extension).
+All under `.specify/extensions/figma-specs/figma-images-to-spec/` (installed with the Figma Specs extension).

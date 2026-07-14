@@ -1,4 +1,4 @@
-# Figma Images to Spec — a Spec Kit extension
+# Figma Specs — a Spec Kit extension
 
 A [GitHub Spec Kit](https://github.com/github/spec-kit) extension that turns a **Figma section's screens** into
 Figma-derived specs — per-screen `spec.md` files, app-level `user-stories.md`, and a `build-order.md` — then
@@ -7,7 +7,7 @@ hands off to core `/speckit.specify`.
 It adds one command:
 
 ```
-/speckit.figma-import <figma-section-url> [-o <module-name>]
+/speckit.figma-specs.import <figma-section-url> [-o <module-name>]
 ```
 
 Agent-agnostic: the command and pipeline are plain Markdown, so Spec Kit registers them for whichever agent you
@@ -30,7 +30,7 @@ a bundled **standard-library `python3` script** — no `pip install`, no `uv`, n
 From your Spec Kit project root, install directly from a release archive:
 
 ```bash
-specify extension add figma-import \
+specify extension add figma-specs \
   --from https://github.com/wavemaker/spec-kit-figma-import/archive/refs/tags/v1.0.0.zip
 ```
 
@@ -43,7 +43,7 @@ specify extension add --dev /path/to/spec-kit-figma-import
 Verify:
 
 ```bash
-specify extension list   # should show "Figma Images to Spec (v1.0.0)"
+specify extension list   # should show "Figma Specs (v1.0.0)"
 ```
 
 > **Note on the community catalog:** the Spec Kit community catalog is *discovery-only*
@@ -54,7 +54,7 @@ specify extension list   # should show "Figma Images to Spec (v1.0.0)"
 ## Use
 
 ```
-/speckit.figma-import <figma-section-url> [-o <module-name>]
+/speckit.figma-specs.import <figma-section-url> [-o <module-name>]
 ```
 
 The pipeline runs four steps in order and then stops, handing the result to `/speckit.specify`:
@@ -97,7 +97,7 @@ From there, continue with core Spec Kit: `/speckit.specify` → `/speckit.plan` 
 spec-kit-figma-import/
 ├── extension.yml                 # Spec Kit manifest
 ├── commands/
-│   └── speckit.figma-images.specify.md
+│   └── speckit.figma-specs.import.md
 ├── scripts/
 │   └── figma_pull.py             # self-contained stdlib REST helper (screens + resources)
 ├── figma-images-to-spec/         # the Markdown pipeline (installed alongside the command)
