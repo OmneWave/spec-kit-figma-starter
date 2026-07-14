@@ -1,14 +1,14 @@
 schema_version: "1.0"
 
 extension:
-  id: figma-images
-  name: "Figma Images to Spec"
+  id: figma-import
+  name: "Figma to Spec"
   version: "1.0.0"
   description: "Turn a Figma section's screens into per-screen specs, user stories, and a build order, then hand off to /speckit.specify."
   # TODO: replace YOUR-GITHUB-USERNAME with the real public repo owner before publishing.
   author: "Tarini Mohapatra"
-  repository: "https://github.com/YOUR-GITHUB-USERNAME/spec-kit-figma-images"
-  homepage: "https://github.com/YOUR-GITHUB-USERNAME/spec-kit-figma-images"
+  repository: "https://github.com/wavemaker/spec-kit-figma-import"
+  homepage: "https://github.com/wavemaker/spec-kit-figma-import"
   license: MIT
 
 requires:
@@ -20,13 +20,13 @@ requires:
 
 provides:
   commands:
-    - name: speckit.figma-images.specify
-      file: commands/speckit.figma-images.specify.md
+    - name: speckit.figma-import
+      file: commands/speckit.figma-import.md
       description: "Generate Figma-derived specs from a Figma section link, then hand off to /speckit.specify"
 
 hooks:
   before_specify:
-    command: "speckit.figma-images.specify"
+    command: "speckit.figma-import"
     priority: 10
     optional: true
     prompt: "Generate Spec Kit specs from a Figma section before running /speckit.specify?"

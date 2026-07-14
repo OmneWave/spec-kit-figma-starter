@@ -7,7 +7,7 @@ hands off to core `/speckit.specify`.
 It adds one command:
 
 ```
-/speckit.figma-images.specify <figma-section-url> [-o <module-name>]
+/speckit.figma-import <figma-section-url> [-o <module-name>]
 ```
 
 Agent-agnostic: the command and pipeline are plain Markdown, so Spec Kit registers them for whichever agent you
@@ -30,14 +30,14 @@ a bundled **standard-library `python3` script** — no `pip install`, no `uv`, n
 From your Spec Kit project root, install directly from a release archive:
 
 ```bash
-specify extension add figma-images \
-  --from https://github.com/YOUR-GITHUB-USERNAME/spec-kit-figma-images/archive/refs/tags/v1.0.0.zip
+specify extension add figma-import \
+  --from https://github.com/wavemaker/spec-kit-figma-import/archive/refs/tags/v1.0.0.zip
 ```
 
 Or, for local development against a checkout of this repo:
 
 ```bash
-specify extension add --dev /path/to/spec-kit-figma-images
+specify extension add --dev /path/to/spec-kit-figma-import
 ```
 
 Verify:
@@ -54,7 +54,7 @@ specify extension list   # should show "Figma Images to Spec (v1.0.0)"
 ## Use
 
 ```
-/speckit.figma-images.specify <figma-section-url> [-o <module-name>]
+/speckit.figma-import <figma-section-url> [-o <module-name>]
 ```
 
 The pipeline runs four steps in order and then stops, handing the result to `/speckit.specify`:
@@ -94,7 +94,7 @@ From there, continue with core Spec Kit: `/speckit.specify` → `/speckit.plan` 
 ## Layout of this repo
 
 ```
-spec-kit-figma-images/
+spec-kit-figma-import/
 ├── extension.yml                 # Spec Kit manifest
 ├── commands/
 │   └── speckit.figma-images.specify.md
