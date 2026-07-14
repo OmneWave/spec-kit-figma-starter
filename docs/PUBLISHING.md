@@ -15,8 +15,8 @@ distribution paths. This extension is set up for all three.
    Then create the GitHub release for that tag.
 3. Users install with:
    ```bash
-   specify extension add figma-specs \
-     --from https://github.com/<owner>/figma-specs/archive/refs/tags/v1.0.0.zip
+   specify extension add figma-starter \
+     --from https://github.com/<owner>/figma-starter/archive/refs/tags/v1.0.0.zip
    ```
 
 ## 2. Community catalog (discovery)
@@ -32,7 +32,7 @@ days and lists it in `catalog.community.json`.
 
 **Heads-up on the ID:** the community catalog already contains an extension with
 `id: figma` (`Fyloss/spec-kit-figma`). This extension deliberately uses
-`id: figma-specs` to avoid the collision. Keep it distinct.
+`id: figma-starter` to avoid the collision. Keep it distinct.
 
 ## 3. Organization / private catalog (internal use — no public release)
 

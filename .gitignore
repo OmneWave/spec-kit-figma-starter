@@ -7,7 +7,7 @@ __pycache__/
 *.pyc
 
 # Generated output (never commit real pulls)
-figma-specs/
+figma-starter/
 
 # OS / editor
 .DS_Store

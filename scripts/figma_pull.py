@@ -7,7 +7,7 @@ external CLI. Ships inside the extension and is invoked by the pipeline skills:
     python3 figma_pull.py screens   "<figma section url>" [-o <module>] [--root <dir>]
     python3 figma_pull.py resources "<figma section url>" [-o <module>] [--root <dir>] [--assets-only]
 
-Output lands under <root>/figma-specs/<module>/ (root defaults to the current
+Output lands under <root>/figma-starter/<module>/ (root defaults to the current
 directory, i.e. the Spec Kit project root).
 
 Token resolution order: FIGMA_TOKEN or FIGMA_ACCESS_TOKEN environment variable,
@@ -63,14 +63,14 @@ def figma_token(root: Path) -> str:
 
 
 # --------------------------------------------------------------------------- #
-# Paths — <root>/figma-specs/<module>/...
+# Paths — <root>/figma-starter/<module>/...
 # --------------------------------------------------------------------------- #
 
-FIGMA_SPECS_DIR = "figma-specs"
+FIGMA_STARTER_DIR = "figma-starter"
 
 
 def module_slug_dir(module: str, root: Path) -> Path:
-    return root / FIGMA_SPECS_DIR / module
+    return root / FIGMA_STARTER_DIR / module
 
 
 def page_resources_dir(module: str, page_slug: str, root: Path) -> Path:
@@ -332,10 +332,10 @@ def pull_screens(url: str, *, output: str | None, root: Path, token: str) -> Pat
         "screenCount": len(screens),
         "screens": screens,
         "layout": {
-            "module": f"figma-specs/{module}/",
-            "designTokens": f"figma-specs/{module}/design-tokens/",
-            "typography": f"figma-specs/{module}/typography/",
-            "pageResources": f"figma-specs/{module}/<NN>-<slug>/figma-resources/",
+            "module": f"figma-starter/{module}/",
+            "designTokens": f"figma-starter/{module}/design-tokens/",
+            "typography": f"figma-starter/{module}/typography/",
+            "pageResources": f"figma-starter/{module}/<NN>-<slug>/figma-resources/",
         },
     }
     (spec_dir / "screens.json").write_text(json.dumps(catalog, indent=2) + "\n")
@@ -633,7 +633,7 @@ def pull_resources(
     manifest["notes"] = {
         "fonts": "Figma API exports typography tokens only, not font files (TTF/WOFF).",
         "tokens": "Design tokens and typography are module-level (shared across all screens).",
-        "pageResources": f"Per-screen icons/images live in figma-specs/{module}/<NN>-<slug>/figma-resources/.",
+        "pageResources": f"Per-screen icons/images live in figma-starter/{module}/<NN>-<slug>/figma-resources/.",
     }
     (spec_dir / "resources-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return spec_dir
@@ -661,7 +661,7 @@ def main(argv: list[str] | None = None) -> int:
         p.add_argument(
             "--root",
             default=".",
-            help="Project root; output goes to <root>/figma-specs/ (default: current dir)",
+            help="Project root; output goes to <root>/figma-starter/ (default: current dir)",
         )
         if name == "resources":
             p.add_argument(

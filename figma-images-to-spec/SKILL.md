@@ -15,7 +15,7 @@ End-to-end spec workflow. Run the **pipeline** sub-skills in order, then hand of
 
 | Step | Sub-skill | Output |
 |------|-----------|--------|
-| 1 | [pull-screens](pull-screens/SKILL.md) | `screens.json`, per-page screen PNGs under `figma-specs/<module>/<NN>-<slug>/figma-resources/screens/` |
+| 1 | [pull-screens](pull-screens/SKILL.md) | `screens.json`, per-page screen PNGs under `figma-starter/<module>/<NN>-<slug>/figma-resources/screens/` |
 | 2 | [trace-flows](trace-flows/SKILL.md) | Flow map (pages, dialogs, journeys) |
 | 3 | [read-screens](read-screens/SKILL.md) | Layout notes per page / dialog / step |
 | 4 | [write-spec](write-spec/SKILL.md) | `user-stories.md`, `build-order.md`, `<NN>-<slug>/spec.md` per screen |
@@ -40,15 +40,15 @@ Always use the Figma MCP for these; the REST CLI is not used for tokens/typograp
 **Part 2 — icons + images via bundled REST helper** (background):
 
 ```bash
-python3 .specify/extensions/figma-specs/scripts/figma_pull.py resources "<url>" -o <module> --assets-only &   # icons + embedded only
+python3 .specify/extensions/figma-starter/scripts/figma_pull.py resources "<url>" -o <module> --assets-only &   # icons + embedded only
 ```
 
 ## Output layout
 
-`figma-specs/` is created under the project root (where `.specify/` lives). Everything for a module lives under `figma-specs/<module>/`. Tokens and typography are **module-level** (shared across screens); each screen owns a nested **`figma-resources/`** with the screens, icons, and embedded images needed to build it.
+`figma-starter/` is created under the project root (where `.specify/` lives). Everything for a module lives under `figma-starter/<module>/`. Tokens and typography are **module-level** (shared across screens); each screen owns a nested **`figma-resources/`** with the screens, icons, and embedded images needed to build it.
 
 ```
-figma-specs/
+figma-starter/
   <module>/
     screens.json
     resources-manifest.json
@@ -75,8 +75,8 @@ Page folders use **`{order}-{slug}/`** directly under the module (no `pages/` su
 
 The Figma-derived specs are the **input** to core Spec Kit — this pipeline does not create a feature itself.
 
-1. **Whole module:** `/speckit.specify` pointing at `figma-specs/<module>/` (`user-stories.md` + `build-order.md` + every `<NN>-<slug>/spec.md`).
-2. **Single screen:** `/speckit.specify` pointing at one `figma-specs/<module>/<NN>-<slug>/spec.md` (follow `build-order.md`).
+1. **Whole module:** `/speckit.specify` pointing at `figma-starter/<module>/` (`user-stories.md` + `build-order.md` + every `<NN>-<slug>/spec.md`).
+2. **Single screen:** `/speckit.specify` pointing at one `figma-starter/<module>/<NN>-<slug>/spec.md` (follow `build-order.md`).
 
 From there the normal chain follows: `/speckit.plan` → `/speckit.tasks` → `/speckit.implement`.
 

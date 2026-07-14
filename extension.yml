@@ -1,13 +1,13 @@
 schema_version: "1.0"
 
 extension:
-  id: figma-specs
-  name: "Figma Specs"
+  id: figma-starter
+  name: "Figma Starter"
   version: "1.0.0"
   description: "Turn a Figma section's screens into per-screen specs, user stories, and a build order, then hand off to /speckit.specify."
   author: "Wavemaker"
-  repository: "https://github.com/wavemaker/figma-specs"
-  homepage: "https://github.com/wavemaker/figma-specs"
+  repository: "https://github.com/wavemaker/figma-starter"
+  homepage: "https://github.com/wavemaker/figma-starter"
   license: MIT
 
 requires:
@@ -19,13 +19,13 @@ requires:
 
 provides:
   commands:
-    - name: speckit.figma-specs.import
-      file: commands/speckit.figma-specs.import.md
+    - name: speckit.figma-starter.import
+      file: commands/speckit.figma-starter.import.md
       description: "Generate Figma-derived specs from a Figma section link, then hand off to /speckit.specify"
 
 hooks:
   before_specify:
-    command: "speckit.figma-specs.import"
+    command: "speckit.figma-starter.import"
     priority: 10
     optional: true
     prompt: "Generate Spec Kit specs from a Figma section before running /speckit.specify?"
