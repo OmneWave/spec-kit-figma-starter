@@ -17,15 +17,15 @@ Download frames and prototype metadata from a Figma section.
 # Optional: load a token from .env if you use one (else export FIGMA_TOKEN).
 [ -f .env ] && set -a && . ./.env && set +a
 
-python3 .specify/extensions/figma-specs/scripts/figma_pull.py screens "<figma section url>"
+python3 .specify/extensions/figma-starter/scripts/figma_pull.py screens "<figma section url>"
 ```
 
-Optional: `-o module-name` to override the output folder under `figma-specs/`.
+Optional: `-o module-name` to override the output folder under `figma-starter/`.
 
 ## Output
 
 ```
-figma-specs/
+figma-starter/
   <module>/
     screens.json
     01-…/figma-resources/screens/01-….png
@@ -56,7 +56,7 @@ Flattened into `screens.json` → `taps` per screen:
 
 ## Fallback (no token)
 
-1. Figma MCP `get_screenshot` per frame → save as `figma-specs/<module>/01-…/figma-resources/screens/01-….png`, …
+1. Figma MCP `get_screenshot` per frame → save as `figma-starter/<module>/01-…/figma-resources/screens/01-….png`, …
 2. For `taps`, still need REST API node payload with `interactions` / `actions` — MCP `get_metadata` is structure-only (no prototype actions).
 3. Write `screens.json` in the same shape as the CLI. **Do not stop** — continue to trace-flows.
 

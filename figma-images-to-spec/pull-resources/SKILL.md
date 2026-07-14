@@ -4,7 +4,7 @@ description: >-
   Optional background task for figma-images-to-spec. Extract module-level color
   tokens and typography via the local Figma MCP, plus per-screen icons and
   embedded images via the bundled figma_pull.py REST helper, into
-  figma-specs/<module>/. Tokens and typography always come from the Figma
+  figma-starter/<module>/. Tokens and typography always come from the Figma
   MCP; icons and images always come from the REST helper.
   Independent of the spec pipeline — run in parallel after pull-screens.
 disable-model-invocation: true
@@ -12,7 +12,7 @@ disable-model-invocation: true
 
 # Pull resources (background)
 
-Extract design assets into `figma-specs/<module>/`. There are two fixed sources:
+Extract design assets into `figma-starter/<module>/`. There are two fixed sources:
 
 - **Design tokens and typography** — always via the **local Figma MCP** (`get_variable_defs`, `get_design_context`). Module-level (shared across screens).
 - **Icons and embedded images** — always via the **bundled REST helper** (`figma_pull.py resources --assets-only`). Per screen, in each page's `figma-resources/`.
@@ -32,11 +32,11 @@ Extract design assets into `figma-specs/<module>/`. There are two fixed sources:
 Always use the **local Figma MCP** for these — the REST API is unreliable for variables and text styles:
 
 1. **Color tokens** — call `get_variable_defs` with the Figma URL.
-   Write the result to `figma-specs/<module>/design-tokens/tokens.json`.
+   Write the result to `figma-starter/<module>/design-tokens/tokens.json`.
 
 2. **Typography** — call `get_design_context` with the Figma URL.
    Extract all text styles (fontFamily, fontWeight, fontSize, lineHeightPx, letterSpacing).
-   Write to `figma-specs/<module>/typography/typography.json` as a JSON array.
+   Write to `figma-starter/<module>/typography/typography.json` as a JSON array.
 
 Tokens and typography are module-level — the Figma MCP returns document-level data, so it is not scoped per screen.
 
@@ -46,7 +46,7 @@ If the local Figma MCP is not connected, connect it first (it exposes `get_varia
 
 ```bash
 [ -f .env ] && set -a && . ./.env && set +a
-python3 .specify/extensions/figma-specs/scripts/figma_pull.py resources "<figma section url>" -o <module> --assets-only &
+python3 .specify/extensions/figma-starter/scripts/figma_pull.py resources "<figma section url>" -o <module> --assets-only &
 ```
 
 `--assets-only` pulls **only** icons and embedded images — tokens and typography come from the MCP in Part 1, so the helper never touches them. Use the same `-o module-name` as pull-screens. **Do not wait** for this process.
@@ -54,7 +54,7 @@ python3 .specify/extensions/figma-specs/scripts/figma_pull.py resources "<figma 
 ## Output
 
 ```
-figma-specs/<module>/
+figma-starter/<module>/
   resources-manifest.json                 ← index of tokens, typography, per-page assets
   design-tokens/tokens.json               ← module-level; local Figma MCP (get_variable_defs)
   typography/typography.json              ← module-level; local Figma MCP (get_design_context)

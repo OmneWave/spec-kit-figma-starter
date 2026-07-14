@@ -9,7 +9,7 @@ disable-model-invocation: true
 
 # Read screens
 
-Open **each** page's PNG at `figma-specs/<module>/<NN>-<slug>/figma-resources/screens/` (`01`, `02`, …). Match to a page, dialog, or wizard step from the flow map.
+Open **each** page's PNG at `figma-starter/<module>/<NN>-<slug>/figma-resources/screens/` (`01`, `02`, …). Match to a page, dialog, or wizard step from the flow map.
 
 ## Label controls
 

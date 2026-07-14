@@ -8,14 +8,14 @@ Paste your Figma **section** link in Cursor and ask:
 
 1. Install the extension into your Spec Kit project (see the extension README).
 2. Set a Figma token — either export `FIGMA_TOKEN=...` or add it to a `.env` file at the project root. (Without a token the pipeline falls back to the Figma MCP server.)
-3. Open the project in your coding agent. `figma-specs/` is created under the project root the first time the pipeline runs.
+3. Open the project in your coding agent. `figma-starter/` is created under the project root the first time the pipeline runs.
 
 ## You get
 
-Everything under `figma-specs/<module>/`. Tokens and typography are shared module-level; each screen owns a nested `figma-resources/` with its screens, icons, and embedded images.
+Everything under `figma-starter/<module>/`. Tokens and typography are shared module-level; each screen owns a nested `figma-resources/` with its screens, icons, and embedded images.
 
 ```
-figma-specs/
+figma-starter/
   <module>/
     screens.json
     resources-manifest.json
@@ -42,13 +42,13 @@ This pipeline stops at the Figma-derived specs. Hand them to core `/speckit.spec
 **Whole module:**
 
 ```
-/speckit.specify using figma-specs/<module>/ (user-stories.md + build-order.md + each screen spec.md)
+/speckit.specify using figma-starter/<module>/ (user-stories.md + build-order.md + each screen spec.md)
 ```
 
 **Single screen (in build-order sequence):**
 
 ```
-/speckit.specify using figma-specs/<module>/01-list-page/spec.md
+/speckit.specify using figma-starter/<module>/01-list-page/spec.md
 ```
 
 Then continue the normal chain: `/speckit.plan` → `/speckit.tasks` → `/speckit.implement`.
@@ -63,4 +63,4 @@ Then continue the normal chain: `/speckit.plan` → `/speckit.tasks` → `/speck
 | 4 | write-spec |
 | background | pull-resources |
 
-All under `.specify/extensions/figma-specs/figma-images-to-spec/` (installed with the Figma Specs extension).
+All under `.specify/extensions/figma-starter/figma-images-to-spec/` (installed with the Figma Starter extension).

@@ -25,7 +25,7 @@ Do **not** write `tasks.md` or a Spec Kit `spec.md` here — that is core `/spec
 ## Output tree
 
 ```
-figma-specs/<module>/
+figma-starter/<module>/
   user-stories.md
   build-order.md
   01-specification-list/

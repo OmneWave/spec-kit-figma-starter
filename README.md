@@ -1,4 +1,4 @@
-# Figma Specs — a Spec Kit extension
+# Figma Starter — a Spec Kit extension
 
 A [GitHub Spec Kit](https://github.com/github/spec-kit) extension that turns a **Figma section's screens** into
 Figma-derived specs — per-screen `spec.md` files, app-level `user-stories.md`, and a `build-order.md` — then
@@ -7,7 +7,7 @@ hands off to core `/speckit.specify`.
 It adds one command:
 
 ```
-/speckit.figma-specs.import <figma-section-url> [-o <module-name>]
+/speckit.figma-starter.import <figma-section-url> [-o <module-name>]
 ```
 
 Agent-agnostic: the command and pipeline are plain Markdown, so Spec Kit registers them for whichever agent you
@@ -29,7 +29,7 @@ specify init                    create a Spec Kit project
         │
 /speckit.constitution           establish project principles
         │
-/speckit.figma-specs.import     👈 THIS EXTENSION — Figma section → per-screen specs
+/speckit.figma-starter.import     👈 THIS EXTENSION — Figma section → per-screen specs
         │
 /speckit.specify                synthesize the Figma-derived specs into a feature spec
         │
@@ -42,7 +42,7 @@ command asks whether you'd like to set one up with `/speckit.constitution` **bef
 `/speckit.specify` — so you end up with a constitution either way:
 
 ```text
-/speckit.figma-specs.import     run right after install — Figma section → per-screen specs
+/speckit.figma-starter.import     run right after install — Figma section → per-screen specs
         │
    (no constitution yet?)  →    "Set one up with /speckit.constitution first?"  →  /speckit.constitution
         │
@@ -71,20 +71,20 @@ cd my-app
 From your Spec Kit project root, install directly from a release archive:
 
 ```bash
-specify extension add figma-specs \
-  --from https://github.com/wavemaker/figma-specs/archive/refs/tags/v1.0.0.zip
+specify extension add figma-starter \
+  --from https://github.com/wavemaker/figma-starter/archive/refs/tags/v1.0.0.zip
 ```
 
 Or, for local development against a checkout of this repo:
 
 ```bash
-specify extension add --dev /path/to/figma-specs
+specify extension add --dev /path/to/figma-starter
 ```
 
 Verify it registered:
 
 ```bash
-specify extension list   # should show "Figma Specs (v1.0.0)"
+specify extension list   # should show "Figma Starter (v1.0.0)"
 ```
 
 > **Note on the community catalog:** the Spec Kit community catalog is *discovery-only*
@@ -112,8 +112,8 @@ extension, then hands off to core Spec Kit:
 
 ```text
 /speckit.constitution                                       # 1. project principles
-/speckit.figma-specs.import <figma-section-url> [-o <name>]  # 2. Figma → specs (this extension)
-/speckit.specify                                            # 3. point it at figma-specs/<module>/
+/speckit.figma-starter.import <figma-section-url> [-o <name>]  # 2. Figma → specs (this extension)
+/speckit.specify                                            # 3. point it at figma-starter/<module>/
 /speckit.plan                                               # 4. technical plan
 /speckit.tasks                                              # 5. task list
 /speckit.implement                                          # 6. build it
@@ -122,7 +122,7 @@ extension, then hands off to core Spec Kit:
 Prefer to start with the import? You can run it first — it works standalone:
 
 ```text
-/speckit.figma-specs.import <figma-section-url> [-o <name>]  # run right after install
+/speckit.figma-starter.import <figma-section-url> [-o <name>]  # run right after install
 # → if no constitution exists, the command asks whether to set one up with
 #   /speckit.constitution before you continue to /speckit.specify
 /speckit.specify  →  /speckit.plan  →  /speckit.tasks  →  /speckit.implement
@@ -143,7 +143,7 @@ Design **tokens** and **typography** come from the local Figma MCP (`get_variabl
 ## Output
 
 ```
-figma-specs/<module>/            ← Figma-derived design source (under the project root)
+figma-starter/<module>/            ← Figma-derived design source (under the project root)
   screens.json
   resources-manifest.json
   user-stories.md
@@ -165,10 +165,10 @@ From there, continue with core Spec Kit: `/speckit.specify` → `/speckit.plan` 
 ## Layout of this repo
 
 ```
-figma-specs/
+figma-starter/
 ├── extension.yml                 # Spec Kit manifest
 ├── commands/
-│   └── speckit.figma-specs.import.md
+│   └── speckit.figma-starter.import.md
 ├── scripts/
 │   └── figma_pull.py             # self-contained stdlib REST helper (screens + resources)
 ├── figma-images-to-spec/         # the Markdown pipeline (installed alongside the command)
