@@ -4,10 +4,10 @@ extension:
   id: figma-starter
   name: "Figma Starter"
   version: "1.0.0"
-  description: "Turn a Figma section's screens into per-screen specs, user stories, and a build order, then hand off to /speckit.specify."
+  description: "Turns a Figma section's screens into per-screen specs, then hands off to /speckit.specify."
   author: "Wavemaker"
-  repository: "https://github.com/wavemaker/figma-starter"
-  homepage: "https://github.com/wavemaker/figma-starter"
+  repository: "https://github.com/wavemaker/spec-kit-figma-starter"
+  homepage: "https://github.com/wavemaker/spec-kit-figma-starter"
   license: MIT
 
 requires:
