@@ -4,6 +4,15 @@ A [GitHub Spec Kit](https://github.com/github/spec-kit) extension that turns a *
 Figma-derived specs — per-screen `spec.md` files, app-level `user-stories.md`, and a `build-order.md` — then
 hands off to core `/speckit.specify`.
 
+## Quick start
+
+```bash
+specify init .                              # initialize in the current folder
+specify init folder_name --integration [choose your agent]   # or create a new folder
+specify extension add figma-starter \
+  --from https://github.com/wavemaker/spec-kit-figma-starter/archive/refs/tags/v1.0.0.zip
+```
+
 It adds one command:
 
 ```
@@ -72,7 +81,7 @@ From your Spec Kit project root, install directly from a release archive:
 
 ```bash
 specify extension add figma-starter \
-  --from https://github.com/wavemaker/figma-starter/archive/refs/tags/v1.0.0.zip
+  --from https://github.com/wavemaker/spec-kit-figma-starter/archive/refs/tags/v1.0.0.zip
 ```
 
 Or, for local development against a checkout of this repo:
@@ -89,8 +98,7 @@ specify extension list   # should show "Figma Starter (v1.0.0)"
 
 > **Note on the community catalog:** the Spec Kit community catalog is *discovery-only*
 > (`install_allowed: false`) — being listed there makes the extension searchable, but users still install with
-> `--from <url>` above (or by copying the entry into their own `catalog.json`). See
-> [`docs/PUBLISHING.md`](docs/PUBLISHING.md).
+> `--from <url>` above (or by copying the entry into their own `catalog.json`).
 
 ### Step 3 — Set your Figma token
 
