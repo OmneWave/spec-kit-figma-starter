@@ -1,0 +1,39 @@
+schema_version: "1.0"
+
+extension:
+  id: figma-starter
+  name: "Figma Starter"
+  version: "1.0.0"
+  description: "Turn a Figma section's screens into per-screen specs, user stories, and a build order, then hand off to /speckit.specify."
+  author: "Wavemaker"
+  repository: "https://github.com/wavemaker/figma-starter"
+  homepage: "https://github.com/wavemaker/figma-starter"
+  license: MIT
+
+requires:
+  speckit_version: ">=0.1.0"
+  tools:
+    - name: python3
+      version: ">=3.8"
+      required: true
+
+provides:
+  commands:
+    - name: speckit.figma-starter.import
+      file: commands/speckit.figma-starter.import.md
+      description: "Generate Figma-derived specs from a Figma section link, then hand off to /speckit.specify"
+
+hooks:
+  before_specify:
+    command: "speckit.figma-starter.import"
+    priority: 10
+    optional: true
+    prompt: "Generate Spec Kit specs from a Figma section before running /speckit.specify?"
+    description: "Run the figma-images-to-spec pipeline to turn a Figma design into specs."
+
+tags:
+  - figma
+  - design
+  - design-to-spec
+  - ui
+  - frontend
