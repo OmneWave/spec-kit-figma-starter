@@ -428,6 +428,38 @@
   .chip.active { border-color: var(--redline); color: var(--ink); background: var(--redline-soft); font-weight: 600; }
   .arrow { color: var(--rule); flex: 0 0 auto; }
 
+  /* ---------- honest list ---------- */
+  .honest-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .honest-list li {
+    padding: 16px 0;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    align-items: baseline;
+    color: var(--ink-dim);
+    font-size: 14.5px;
+  }
+  .honest-list li:last-child { border-bottom: 1px solid var(--rule); }
+  .honest-list li::before {
+    content: "—";
+    color: var(--redline);
+  }
+  .honest-list .tag {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink);
+    flex: 0 0 auto;
+  }
+
   /* ---------- quick start ---------- */
   .steps { display: flex; flex-direction: column; gap: 18px; }
   .step {
@@ -517,9 +549,11 @@
   <div class="topbar">
     <div class="mark">FIGMA<span>·</span>STARTER</div>
     <nav>
+      <a href="#problem">Why</a>
       <a href="#pipeline">Pipeline</a>
-      <a href="#workflow">Workflow</a>
-      <a href="#start">Quick start</a>
+      <a href="#workflow">Fit</a>
+      <a href="#honest">Limits</a>
+      <a href="#start">Start</a>
       <a href="https://github.com/wavemaker/spec-kit-figma-starter">Source ↗</a>
     </nav>
   </div>
@@ -529,8 +563,8 @@
   <div class="frame">
     <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
     <p class="eyebrow">Spec Kit extension · Figma → spec</p>
-    <h1>Redline the screen.<br>Ship the <em>spec</em>.</h1>
-    <p class="lede">Figma Starter turns a Figma section's screens into per-screen specs, an app-level user-stories.md, and a build-order.md — then hands straight off to <code>/speckit.specify</code>.</p>
+    <h1>Stop redlining by hand.<br>Start reviewing the <em>spec</em>.</h1>
+    <p class="lede">We got tired of opening a Figma section, clicking through every screen, and typing up what was already designed. Figma Starter reads the actual rendered frames and prototype taps and writes the first draft — per-screen specs, user stories, build order — so you review output instead of transcribing screens. Then it hands off to <code>/speckit.specify</code>.</p>
     <div class="cta-row">
       <div class="install-box">
         <code><span class="prompt">$</span>specify extension add figma-starter --from https://github.com/wavemaker/spec-kit-figma-starter/archive/refs/tags/v1.0.0.zip</code>
@@ -547,11 +581,19 @@
 </div>
 
 <div class="wrap">
+  <section id="problem" class="reveal">
+    <div class="section-head">
+      <p class="eyebrow">Before</p>
+      <h2>A Figma section isn't a spec.</h2>
+      <p>Someone still opens the file, clicks through every screen, and writes down the layout, the copy, the states, and which tap goes where — before <code>/speckit.specify</code> ever sees it. Fine for three screens. Not fine for thirty.</p>
+    </div>
+  </section>
+
   <section id="how" class="reveal">
     <div class="section-head">
-      <p class="eyebrow">Annotated</p>
+      <p class="eyebrow">After</p>
       <h2>Reads the screen like a redline, not a re-render.</h2>
-      <p>It pulls the section's actual rendered frames and prototype links, then annotates what it finds — the same way a designer marks up a screen before handoff.</p>
+      <p>It pulls the section's actual rendered frames and prototype links, then annotates what it finds — the same transcription a designer would do by hand before handoff, minus the hand part.</p>
     </div>
     <div class="annot-grid">
       <div class="col-left">
@@ -591,7 +633,7 @@
   <section id="pipeline" class="reveal">
     <div class="section-head">
       <p class="eyebrow">Pipeline</p>
-      <h2>One command, four steps, in order.</h2>
+      <h2>One command. Four steps. No skipping ahead.</h2>
       <p><code>/speckit.figma-starter.import &lt;figma-section-url&gt; [-o &lt;module-name&gt;]</code> runs all four and stops, handing the result to <code>/speckit.specify</code>.</p>
     </div>
     <div class="chain">
@@ -621,6 +663,19 @@
       <span class="arrow">→</span>
       <span class="chip">/speckit.implement</span>
     </div>
+  </section>
+
+  <section id="honest" class="reveal">
+    <div class="section-head">
+      <p class="eyebrow">Worth knowing</p>
+      <h2>What it doesn't do.</h2>
+    </div>
+    <ul class="honest-list">
+      <li><span class="tag">Not from a loose artboard</span>It expects a Figma section with real frames, not one screen dropped on a canvas.</li>
+      <li><span class="tag">Not a design-system guesser</span>Tokens and typography come from the local Figma MCP server, live — nothing is invented.</li>
+      <li><span class="tag">Not a replacement for /speckit.specify</span>It hands off to it. The pipeline stops after write-spec, on purpose.</li>
+      <li><span class="tag">Not zero-dependency</span>Icon and embedded-image export needs python3 ≥3.8 on your PATH. That's the one runtime requirement — no pip installs past it.</li>
+    </ul>
   </section>
 
   <section id="start" class="reveal">
