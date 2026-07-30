@@ -10,7 +10,7 @@ hands off to core `/speckit.specify`.
 specify init .                              # initialize in the current folder
 specify init folder_name --integration [choose your agent]   # or create a new folder
 specify extension add figma-starter \
-  --from https://github.com/wavemaker/spec-kit-figma-starter/archive/refs/tags/v1.0.0.zip
+  --from https://github.com/OmneWave/spec-kit-figma-starter/archive/refs/tags/v1.0.0.zip
 ```
 
 It adds one command:
@@ -81,7 +81,7 @@ From your Spec Kit project root, install directly from a release archive:
 
 ```bash
 specify extension add figma-starter \
-  --from https://github.com/wavemaker/spec-kit-figma-starter/archive/refs/tags/v1.0.0.zip
+  --from https://github.com/OmneWave/spec-kit-figma-starter/archive/refs/tags/v1.0.0.zip
 ```
 
 Or, for local development against a checkout of this repo:

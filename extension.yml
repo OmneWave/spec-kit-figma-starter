@@ -6,8 +6,8 @@ extension:
   version: "1.0.0"
   description: "Turns a Figma section's screens into per-screen specs, then hands off to /speckit.specify."
   author: "Wavemaker"
-  repository: "https://github.com/wavemaker/spec-kit-figma-starter"
-  homepage: "https://github.com/wavemaker/spec-kit-figma-starter"
+  repository: "https://github.com/OmneWave/spec-kit-figma-starter"
+  homepage: "https://github.com/OmneWave/spec-kit-figma-starter"
   license: MIT
 
 requires:
