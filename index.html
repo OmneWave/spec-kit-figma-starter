@@ -592,8 +592,8 @@
   <section id="how" class="reveal">
     <div class="section-head">
       <p class="eyebrow">After</p>
-      <h2>Reads the screen like a redline, not a re-render.</h2>
-      <p>It pulls the section's actual rendered frames and prototype links, then annotates what it finds — the same transcription a designer would do by hand before handoff, minus the hand part.</p>
+      <h2>It reads the real screens — and writes the spec.</h2>
+      <p>Figma Starter pulls the section's actual rendered frames and prototype links, then produces the spec: what's on each screen, how the screens connect, and what order to build them in.</p>
     </div>
     <div class="annot-grid">
       <div class="col-left">
@@ -624,7 +624,7 @@
         </div>
         <div class="callout">
           <p class="tag">ZERO EXTRA DEPS</p>
-          <p>Icons and embedded images via a bundled, stdlib-only python3 helper.</p>
+          <p>Icons and images are exported automatically — no extra installs beyond python3.</p>
         </div>
       </div>
     </div>
@@ -671,10 +671,10 @@
       <h2>What it doesn't do.</h2>
     </div>
     <ul class="honest-list">
-      <li><span class="tag">Not from a loose artboard</span>It expects a Figma section with real frames, not one screen dropped on a canvas.</li>
-      <li><span class="tag">Not a design-system guesser</span>Tokens and typography come from the local Figma MCP server, live — nothing is invented.</li>
-      <li><span class="tag">Not a replacement for /speckit.specify</span>It hands off to it. The pipeline stops after write-spec, on purpose.</li>
-      <li><span class="tag">Not zero-dependency</span>Icon and embedded-image export needs python3 ≥3.8 on your PATH. That's the one runtime requirement — no pip installs past it.</li>
+      <li><span class="tag">Needs a real Figma section</span>It expects a section with actual screens, not a single loose frame.</li>
+      <li><span class="tag">Doesn't invent your design system</span>Tokens and typography come straight from Figma, live — nothing is guessed.</li>
+      <li><span class="tag">Doesn't replace /speckit.specify</span>It hands off to it. The pipeline stops after generating the spec, on purpose.</li>
+      <li><span class="tag">One small requirement</span>Icon and image export needs python3 3.8 or newer. That's the only runtime dependency.</li>
     </ul>
   </section>
 
