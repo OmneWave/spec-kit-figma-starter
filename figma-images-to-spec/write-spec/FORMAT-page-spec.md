@@ -21,7 +21,7 @@ Same-page state changes use the page on both sides with a different state label.
 
 ```text
 Page: Specification List
-WaveMaker page: SpecificationList
+Page name: SpecificationList
 
 	Source images
 		figma-resources/screens/10-specification-list.png — default table, Contract tab selected
@@ -64,7 +64,7 @@ Wizard example:
 
 ```text
 Page: Create Specification
-WaveMaker page: CreateSpecification
+Page name: CreateSpecification
 
 	Source images
 		figma-resources/screens/01-create-specification.png — General details, Next disabled
@@ -104,7 +104,7 @@ WaveMaker page: CreateSpecification
 
 | Section | Content |
 |---------|---------|
-| `Page:` / `WaveMaker page:` | Human page name and PascalCase WaveMaker page name (must match `build-order.md`) |
+| `Page:` / `Page name:` | Human page name and PascalCase page name (must match `build-order.md`) |
 | `Source images` | Every downloaded `figma-resources/screens/*.png` for this page from `screens.json`, with a short state label (step, dialog open, disabled Next, toast, …) |
 | `Layout` | Static UI — chrome, tables, forms, wizard steps (`Step1:`, `Step2:`, …), disabled/enabled states |
 | `Dialog: <name>` | Popup layout (under `Layout` or as sibling blocks before `Interactions`) |

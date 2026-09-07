@@ -1,12 +1,12 @@
 # Build order (`build-order.md`)
 
-Module-level **WaveMaker implementation sequence**. Write this after the flow map is complete and before or alongside page files. Derive from `screens.json`, the flow map, and page grouping — not from Figma frame order alone.
+Module-level **implementation sequence**. Write this after the flow map is complete and before or alongside page files. Derive from `screens.json`, the flow map, and page grouping — not from Figma frame order alone.
 
 Place at `specs/<folder>/build-order.md`. Link from `README.md`.
 
 ## Table
 
-| Step | WaveMaker page | Source images | Dialogs | Notes |
+| Step | Page name | Source images | Dialogs | Notes |
 |------|----------------|---------------|---------|-------|
 | 1 | `MainHeader`, `MainLeftnav` | `images/10-…6824.png` | — | Shared partials; extract once, reuse on all pages |
 | 2 | `ContractSpecificationList` | `images/10-…6824.png`, `images/11-…4218.png`, `images/12-…7416.png` | Row options, Delete message | Contract tab selected; table, search, pagination, success toast state |
@@ -19,7 +19,7 @@ Place at `specs/<folder>/build-order.md`. Link from `README.md`.
 | Column | Content |
 |--------|---------|
 | **Step** | Build order (1, 2, 3…). Partials/scaffold before pages that reference them. |
-| **WaveMaker page** | PascalCase page or partial name the WaveMaker skill will create (e.g. `CreateContractSpecification`). Multiple partials on one step: comma-separated in one cell. |
+| **Page name** | PascalCase page or partial name the implementation step will create (e.g. `CreateContractSpecification`). Multiple partials on one step: comma-separated in one cell. |
 | **Source images** | `images/NN-….png` paths from this module. List every PNG that informs this page (wizard steps = multiple images on one row). |
 | **Dialogs** | Dialog names built on this page (`Row options`, `Delete message`, …). Use `—` when none. Popups are never separate pages. |
 | **Notes** | Implementation hints: wizard vs single page, reuse partials, state variants (disabled Next, success toast), navigation targets, shared structure with another page. |
@@ -38,11 +38,11 @@ Place at `specs/<folder>/build-order.md`. Link from `README.md`.
 ```markdown
 # Build order
 
-WaveMaker implementation sequence for [Module Name].
+Implementation sequence for [Module Name].
 
 [Figma section](<url from screens.json>)
 
-| Step | WaveMaker page | Source images | Dialogs | Notes |
+| Step | Page name | Source images | Dialogs | Notes |
 |------|----------------|---------------|---------|-------|
 | 1 | `MainHeader`, `MainLeftnav` | `images/01-….png` | — | Shared chrome |
 | 2 | `ExampleList` | `images/10-….png` | Advanced Filters | Entry page |

@@ -15,10 +15,10 @@ Write documentation from the flow map + layout notes. **Three layers:**
 | Layer | File | Content |
 |-------|------|---------|
 | App | `user-stories.md` | Who, why, journeys, acceptance criteria for the whole module |
-| Build order | `build-order.md` | WaveMaker implementation sequence — step, page, images, dialogs, notes |
+| Build order | `build-order.md` | Implementation sequence — step, page, images, dialogs, notes |
 | Page spec | `<NN>-<slug>/spec.md` | Source images, layout, dialogs, interactions, integration (complete page spec) |
 
-Use **tabs** for hierarchy inside page files (one tab per level). Slug page folders from page names (`Specification List` → `specification-list`). **WaveMaker page** names are PascalCase (`SpecificationList`).
+Use **tabs** for hierarchy inside page files (one tab per level). Slug page folders from page names (`Specification List` → `specification-list`). **Page** names are PascalCase (`SpecificationList`).
 
 Do **not** write `tasks.md` or a Spec Kit `spec.md` here — that is core `/speckit.specify`'s job after this pipeline finishes.
 
@@ -51,14 +51,14 @@ Do **not** duplicate page layout or per-button behavior here.
 
 ## 2 — Module level: `build-order.md`
 
-WaveMaker implementation sequence for the whole module. Write **after** the flow map, **before** or alongside page files.
+Implementation sequence for the whole module. Write **after** the flow map, **before** or alongside page files.
 
 See [FORMAT-build-order.md](FORMAT-build-order.md).
 
 | Column | Content |
 |--------|---------|
 | Step | Build order (partials first, then pages) |
-| WaveMaker page | PascalCase page/partial name(s) |
+| Page name | PascalCase page/partial name(s) |
 | Source images | `images/*.png` paths for this build step |
 | Dialogs | Popups built on this page (`—` if none) |
 | Notes | Wizard steps, reuse, state variants, navigation hints |
@@ -79,7 +79,7 @@ See [FORMAT-page-spec.md](FORMAT-page-spec.md).
 | `Interactions` | In-page behavior — each line: **Source → Destination — action** |
 | `Integration` | Cross-page navigation — each line: **Source → Destination — action** |
 
-Include `WaveMaker page: <PascalCaseName>` matching `build-order.md`.
+Include `Page name: <PascalCaseName>` matching `build-order.md`.
 
 ## Writing rules
 
@@ -89,7 +89,7 @@ Include `WaveMaker page: <PascalCaseName>` matching `build-order.md`.
 - Interactions, integration, and journeys always use **Source → Destination — action**
 - List every page PNG under `Source images` in `spec.md` (paths from `screens.json`)
 - Link `build-order.md` and each page folder from `README.md` when you write one
-- `WaveMaker page` names must be consistent across `build-order.md` and `spec.md`
+- `Page name` values must be consistent across `build-order.md` and `spec.md`
 
 ## Done when
 
