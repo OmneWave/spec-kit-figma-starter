@@ -3,8 +3,8 @@ schema_version: "1.0"
 extension:
   id: figma-starter
   name: "Figma Starter"
-  version: "1.0.0"
-  description: "Turns a Figma section's screens into per-screen specs, then hands off to /speckit.specify."
+  version: "1.1.0"
+  description: "Turns Figma screens and an OpenAPI document into per-screen specs with UI-to-API bindings."
   author: "Wavemaker"
   repository: "https://github.com/OmneWave/spec-kit-figma-starter"
   homepage: "https://github.com/OmneWave/spec-kit-figma-starter"
@@ -22,6 +22,9 @@ provides:
     - name: speckit.figma-starter.import
       file: commands/speckit.figma-starter.import.md
       description: "Generate Figma-derived specs from a Figma section link, then hand off to /speckit.specify"
+    - name: speckit.figma-starter.import-api
+      file: commands/speckit.figma-starter.import-api.md
+      description: "Derive an entity model and per-page UI-to-API bindings from an OpenAPI/Swagger document"
 
 hooks:
   before_specify:
@@ -37,3 +40,6 @@ tags:
   - design-to-spec
   - ui
   - frontend
+  - openapi
+  - swagger
+  - api
