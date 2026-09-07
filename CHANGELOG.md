@@ -3,7 +3,7 @@
 All notable changes to this extension are documented here. Versions follow
 [Semantic Versioning](https://semver.org/).
 
-## [1.1.0] - 2026-08-12
+## [1.1.0] - 2026-09-07
 
 ### Added
 - `/speckit.figma-starter.import-api <swagger-url-or-file> [-m <module>] [--out <folder>] [--page <slug>]`
